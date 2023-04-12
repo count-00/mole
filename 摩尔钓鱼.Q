@@ -18,31 +18,31 @@ ROD_1 = 1
 ROD_2 = 2
 ROD_3 = 3
 
+// 天气代码
+sunny = 1 // 晴天
+rainy = 0 // 雨天
 
-
-confPath = "D:\develop\workspace\anjian\fishLog.txt" // 日志文件全路径
-dateTime = Plugin.Sys.GetDateTime() // 得到操作系统日期和时间 格式： 2023/4/11
-placeCode = ZHAOZE                   // 钓鱼点代码
-rodGrade = ROD_3                     // 鱼竿等级
 
 // 初始化本次钓鱼基本信息
-inf = "=====> "
-inf = inf & dateTime                  
-inf = inf & "placeCode = " & placeCode
-inf = inf & " 我开始钓鱼啦 " & " <====="
+confPath = "D:\develop\workspace\anjian\fishLog.txt" // 日志文件全路径
+dateTime = Plugin.Sys.GetDateTime() // 得到操作系统日期和时间 格式： 2023/4/11
+placeCode = JIAYUAN                  // 钓鱼点代码
+rodGrade = ROD_2                     // 鱼竿等级
+weather  = sunny
+
+inf = "=============> "
+inf = inf & dateTime     
+inf = inf & " weatherCode = " & weather       
+inf = inf & " placeCode = " & placeCode
+inf= inf & " rod grade = " & rodGrade
+inf = inf & " <============="
 Call Plugin.File.WriteFileEx(confPath, inf) 
 
 
-
 For i = 0 To 2000
-
-	//s = 0
-	//inf = "日期：" & dateTime & "  " & "当前i=" & i & "本次循环运行时间" & s & "毫秒"
-	//Call Plugin.File.WriteFileEx(confPath, inf)// 文件不存在的话，创建并写入字符串inf的内容；文件存在的话，在末尾写入inf的内容
-	
-	
 	s1 = Plugin.Sys.GetTime()  // 从操作系统启动到目前的毫秒数，记录循环的开始时间
-	Delay 1000
+	
+	Delay 600
 	KeyPress "Space", 1//抛钩
 
 	wait1 = Plugin.Sys.GetTime() // 记录等待鱼上钩的时间
@@ -56,26 +56,23 @@ For i = 0 To 2000
 	wait2 = Plugin.Sys.GetTime()
 
 	KeyPress "Space", 1  // 鱼上钩
-	Delay 2250    // 等待鱼进圈，大号2000；小号2200-2300，2250即可
+	Delay 2250    // 等待鱼进圈，大号鱼竿等级3：设置为2000 小号鱼竿等级1：2200-2300，2250即可
 	KeyPress "Space", 1 // 收钩
 	Delay 1000
 	LeftClick 1// 点掉收获界面
 	Delay 500
 	LeftClick 1
+	Delay 500
 	
 	// 日志处理逻辑
 	s2 = Plugin.Sys.GetTime()// 从操作系统启动到目前的毫秒数
 	s = s2 - s1            // 钓鱼时间
-	waitingTime = wait2 - wait1  //等待鱼上钩的时间
-
-	//xs = int(s / 1000 / 60 / 60)      // 得到小时数
-	//fz = int( s / 1000 /60 ) - xs * 60  // 分钟
-	//m = Clng(s / 1000) - fz * 60 - xs * 60 * 60// 秒
+	waitingTime = wait2 - wait1//等待鱼上钩的时间
+	dateTime = Plugin.Sys.GetDateTime()
 	
-	inf = i & " fishing time: " & s &  "ms"  // 本次钓鱼总时间
-	inf = inf & " waiting time: " & waitingTime // 等待鱼上钩的时间
-	inf = inf & "getLegendFish:" & "undefined"  // 本次是否得到传说鱼
-	Call Plugin.File.WriteFileEx(confPath, inf) 
-	
+	inf = i & " "& dateTime & " fishing time: " & s &  " ms"  // 本次钓鱼总时间
+	inf = inf & " waiting time: " & waitingTime & " ms "// 等待鱼上钩的时间
+	inf = inf & "getLegendFish: " & "undefined"// 本次是否得到传说鱼 
+	inf = inf & " full: " & "undefined"  // 当前钓鱼点是否拉满
+	Call Plugin.File.WriteFileEx(confPath, inf)
 Next
-
