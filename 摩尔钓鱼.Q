@@ -22,14 +22,43 @@ ROD_3 = 3
 sunny = 1 // 晴天
 rainy = 0 // 雨天
 
+// 鱼饵代码
+bait_1 = 1 // 初级鱼饵
+bait_2 = 2 // 中级鱼饵
+bait_3 = 3 // 高级鱼饵
+
 
 // 初始化本次钓鱼基本信息
-confPath = "D:\develop\workspace\anjian\fishLog.txt" // 日志文件全路径
-dateTime = Plugin.Sys.GetDateTime() // 得到操作系统日期和时间 格式： 2023/4/11
+//confPath = "D:\develop\workspace\anjian\fishLog.txt" // 日志文件全路径
+
+
+// 这里是每次钓鱼要更改的地方
 placeCode = JIAYUAN                  // 钓鱼点代码
 rodGrade = ROD_2                     // 鱼竿等级
 weather  = sunny
+bait = bait_1
 
+// 根据不同的鱼饵等级输出到不同的日志文件
+confPath = "D:\develop\workspace\anjian\fishLog.txt" // 定义日志文件全路径
+if bait = bait_1 then
+	confPath = "D:\develop\workspace\anjian\fishLog_bait1.txt" // 日志文件全路径
+elseif bait = bait_2 then
+	confPath = "D:\develop\workspace\anjian\fishLog.txt" // 日志文件全路径
+elseif bait = bait_3 then
+	confPath = "D:\develop\workspace\anjian\fishLog_bait3.txt" // 日志文件全路径
+endif
+
+// 鱼咬钩后，根据鱼竿等级不同执行不同的估算遛鱼时间
+walkFishTime = 2000 // 定义变量
+if rodGrade = ROD_1 then
+	walkFishTime = 2250 // 小号鱼竿等级1，遛鱼估算时间为2250
+elseif rodGrade = ROD_2 then
+	walkFishTime = 2125  // 不大不小的号，鱼竿等级2，遛鱼估算时间2125
+elseif rodGrade = ROD_3 then
+	walkFishTime = 2000  // 大号鱼竿等级3，遛鱼估算时间为2000
+endif
+
+dateTime = Plugin.Sys.GetDateTime() // 得到操作系统日期和时间 格式： 2023/4/11
 inf = "=============> "
 inf = inf & dateTime     
 inf = inf & " weatherCode = " & weather       
@@ -56,7 +85,7 @@ For i = 0 To 2000
 	wait2 = Plugin.Sys.GetTime()
 
 	KeyPress "Space", 1  // 鱼上钩
-	Delay 2250    // 等待鱼进圈，大号鱼竿等级3：设置为2000 小号鱼竿等级1：2200-2300，2250即可
+	Delay walkFishTime    // 等待鱼进圈，大号鱼竿等级3：设置为2000 小号鱼竿等级1：2200-2300，2250即可
 	KeyPress "Space", 1 // 收钩
 	Delay 1000
 	LeftClick 1// 点掉收获界面

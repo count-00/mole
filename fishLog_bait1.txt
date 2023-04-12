@@ -1,0 +1,15 @@
+=============> 2023-04-12 23:42:38 weatherCode = 1 placeCode = 3 rod grade = 3 <=============
+0 2023-04-12 23:42:51 fishing time: 12130 ms waiting time: 7259 ms getLegendFish: undefined full: undefined
+1 2023-04-12 23:43:55 fishing time: 64816 ms waiting time: 59945 ms getLegendFish: undefined full: undefined
+2 2023-04-12 23:44:05 fishing time: 9356 ms waiting time: 4496 ms getLegendFish: undefined full: undefined
+3 2023-04-12 23:44:16 fishing time: 11108 ms waiting time: 6222 ms getLegendFish: undefined full: undefined
+4 2023-04-12 23:44:29 fishing time: 13608 ms waiting time: 8747 ms getLegendFish: undefined full: undefined
+5 2023-04-12 23:44:42 fishing time: 12901 ms waiting time: 8040 ms getLegendFish: undefined full: undefined
+6 2023-04-12 23:44:54 fishing time: 11748 ms waiting time: 6887 ms getLegendFish: undefined full: undefined
+7 2023-04-12 23:45:06 fishing time: 11818 ms waiting time: 6956 ms getLegendFish: undefined full: undefined
+8 2023-04-12 23:45:20 fishing time: 14025 ms waiting time: 9155 ms getLegendFish: undefined full: undefined
+9 2023-04-12 23:45:32 fishing time: 12072 ms waiting time: 7212 ms getLegendFish: undefined full: undefined
+10 2023-04-12 23:45:44 fishing time: 12150 ms waiting time: 7288 ms getLegendFish: undefined full: undefined
+11 2023-04-12 23:45:53 fishing time: 8818 ms waiting time: 3956 ms getLegendFish: undefined full: undefined
+12 2023-04-12 23:46:13 fishing time: 20056 ms waiting time: 15170 ms getLegendFish: undefined full: undefined
+13 2023-04-12 23:46:18 fishing time: 4901 ms waiting time: 13 ms getLegendFish: undefined full: undefined
